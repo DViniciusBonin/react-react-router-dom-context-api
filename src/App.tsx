@@ -8,12 +8,15 @@ import { ContextProvider } from "./contexts";
 function App() {
   return (
     <ThemeProvider theme={theme.default}>
-      <ContextProvider>
-        <BrowserRouter>
+      <BrowserRouter
+      >
+        <ContextProvider>
+
           <GlobalStyle />
           <Routes />
-        </BrowserRouter>
-      </ContextProvider>
+
+        </ContextProvider>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

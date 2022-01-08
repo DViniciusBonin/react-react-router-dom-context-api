@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import api from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 
 // Provider -> Englobar os componentes
@@ -35,7 +35,7 @@ const initialContext = {
 const AuthContext = createContext<AuthContextData>(initialContext);
 
 function AuthProvider({ children }: Props) {
-
+    const history = useNavigate();
     async function signIn() {
         setLoading(true);
 
@@ -48,6 +48,7 @@ function AuthProvider({ children }: Props) {
 
             setSigned(true);
             setLoading(false);
+            history('/dashboard');
         }, 4000)
     }
 
@@ -56,7 +57,12 @@ function AuthProvider({ children }: Props) {
     const [token, setToken] = useState<string | null>(initialContext.token);
     const [loading, setLoading] = useState(initialContext.loading);
 
+    /*
 
+        Em uma aplicação real, deveria se implementar um useEffect para carregar o token do 
+        localStorage e atualizar o context
+
+    */
     useEffect(() => {
         console.log(loading === true ? 'carregando' : 'parado')
 
