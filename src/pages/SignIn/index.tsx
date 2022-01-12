@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthContext } from '../../contexts/auth';
+import { useAuth } from '../../contexts/auth';
 import logo from '../../logo.svg';
 import { Container, Img, Input, Button } from './styles';
 
@@ -7,7 +7,7 @@ import { Container, Img, Input, Button } from './styles';
 
 function SignIn() {
 
-    const context = useContext(AuthContext);
+    const context = useAuth()
 
     function handleSignIn() {
         context.signIn();

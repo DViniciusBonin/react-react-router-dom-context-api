@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -81,5 +81,12 @@ function AuthProvider({ children }: Props) {
     );
 }
 
-export { AuthContext, AuthProvider }
+function useAuth() {
+
+    const context = useContext(AuthContext)
+
+    return context;
+}
+
+export { useAuth, AuthProvider }
 
